@@ -5,7 +5,10 @@ from ninja import ModelSchema, Router, Schema
 
 from apps.project.models import Project
 
-project_router = Router(tags=["Projet"], auth=None)
+project_router = Router(
+    tags=["Projet"],
+    auth=None,
+)
 
 
 class ProjectRequest(ModelSchema):
