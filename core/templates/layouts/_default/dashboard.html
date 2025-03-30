@@ -1,0 +1,16 @@
+{% extends "layouts/_default/baseof.html" %}
+{% block main %}
+    {% include "layouts/partials/navbar-dashboard.html" %}
+    <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+        {% include "layouts/partials/sidebar.html" %}
+        <main class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900"
+              role="main"
+              aria-label="Contenu principal">
+            <div class="grid grid-cols-1 gap-4 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
+                {% block content %}
+                {% endblock content %}
+            </div>
+            {% include "layouts/partials/footer-dashboard.html" %}
+        </main>
+    </div>
+{% endblock main %}

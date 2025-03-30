@@ -1,0 +1,150 @@
+{% extends "layouts/partials/card.html" %}
+{% block card_body %}
+    <div class="flex flex-col mt-6">
+        <div class="overflow-x-auto rounded-lg">
+            <div class="inline-block min-w-full align-middle">
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Propriété</th>
+                                <th scope="col" class="px-6 py-3">Unité</th>
+                                <th scope="col" class="px-6 py-3">Valeur</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Température humide
+                                </th>
+                                <td class="px-6 py-4">°C</td>
+                                <td class="px-6 py-4">{{ result.wet_bulb_temperature|floatformat:2 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Température de rosée
+                                </th>
+                                <td class="px-6 py-4">°C</td>
+                                <td class="px-6 py-4">{{ result.dew_temperature|floatformat:2 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Compressibilité
+                                </th>
+                                <td class="px-6 py-4">-</td>
+                                <td class="px-6 py-4">{{ result.compressibility|floatformat:4 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Conductivité
+                                </th>
+                                <td class="px-6 py-4">W/m/K</td>
+                                <td class="px-6 py-4">{{ result.conductivity|floatformat:4 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Densité
+                                </th>
+                                <td class="px-6 py-4">kg/m³</td>
+                                <td class="px-6 py-4">{{ result.density|floatformat:4 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Viscosité dynamique
+                                </th>
+                                <td class="px-6 py-4">Pa*s</td>
+                                <td class="px-6 py-4">{{ result.dynamic_viscosity|floatformat:8 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Enthalpie
+                                </th>
+                                <td class="px-6 py-4">J/kg</td>
+                                <td class="px-6 py-4">{{ result.enthalpy|floatformat:2 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Humidité
+                                </th>
+                                <td class="px-6 py-4">kg/kg d.a.</td>
+                                <td class="px-6 py-4">{{ result.humidity|floatformat:6 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Entropie
+                                </th>
+                                <td class="px-6 py-4">J/kg/K</td>
+                                <td class="px-6 py-4">{{ result.entropy|floatformat:2 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Viscosité cinématique
+                                </th>
+                                <td class="px-6 py-4">m²/s</td>
+                                <td class="px-6 py-4">{{ result.kinematic_viscosity|floatformat:8 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Pression partielle
+                                </th>
+                                <td class="px-6 py-4">Pa</td>
+                                <td class="px-6 py-4">{{ result.partial_pressure|floatformat:2 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Nombre de Prandtl
+                                </th>
+                                <td class="px-6 py-4">-</td>
+                                <td class="px-6 py-4">{{ result.prandtl|floatformat:4 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Pression
+                                </th>
+                                <td class="px-6 py-4">Pa</td>
+                                <td class="px-6 py-4">{{ result.pressure|floatformat:2 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Humidité relative
+                                </th>
+                                <td class="px-6 py-4">%</td>
+                                <td class="px-6 py-4">{{ result.relative_humidity|floatformat:2 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Chaleur spécifique
+                                </th>
+                                <td class="px-6 py-4">J/kg/K</td>
+                                <td class="px-6 py-4">{{ result.specific_heat|floatformat:2 }}</td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Volume spécifique
+                                </th>
+                                <td class="px-6 py-4">m³/kg</td>
+                                <td class="px-6 py-4">{{ result.specific_volume|floatformat:4 }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock card_body %}

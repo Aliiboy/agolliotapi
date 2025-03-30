@@ -1,0 +1,38 @@
+{% extends "layouts/partials/card.html" %}
+{% block card_body %}
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="{{ form.altitude.id_for_label }}"
+                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                {{ form.altitude.label }}
+            </label>
+            {{ form.altitude }}
+            {% if form.altitude.errors %}<div class="text-sm text-red-600">{{ form.altitude.errors }}</div>{% endif %}
+        </div>
+        <div class="mb-4">
+            <label for="{{ form.temperature.id_for_label }}"
+                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                {{ form.temperature.label }}
+            </label>
+            {{ form.temperature }}
+            {% if form.temperature.errors %}<div class="text-sm text-red-600">{{ form.temperature.errors }}</div>{% endif %}
+        </div>
+        <div class="mb-6">
+            <label for="{{ form.relative_humidity.id_for_label }}"
+                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                {{ form.relative_humidity.label }}
+            </label>
+            {{ form.relative_humidity }}
+            {% if form.relative_humidity.errors %}
+                <div class="text-sm text-red-600">{{ form.relative_humidity.errors }}</div>
+            {% endif %}
+        </div>
+        <div>
+            <button type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                Calculer
+            </button>
+        </div>
+    </form>
+{% endblock card_body %}

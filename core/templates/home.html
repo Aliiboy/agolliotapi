@@ -1,0 +1,50 @@
+{% extends "layouts/_default/dashboard.html" %}
+{% block content %}
+    <div class="mb-4 col-span-full xl:mb-2">
+        <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Bienvenue sur le Portail</h1>
+    </div>
+    <section class="col-span-full" aria-labelledby="services-title">
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+            <div class="mb-4">
+                <h2 id="services-title" class="text-xl font-semibold dark:text-white">Services Disponibles</h2>
+                <p class="text-gray-500 dark:text-gray-400">Consultez nos différents outils et services disponibles.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <article class="p-4 bg-gray-50 rounded-lg dark:bg-gray-700">
+                    <h3 class="text-lg font-medium dark:text-white">Calculateur d'Air Humide</h3>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">
+                        Calculez les propriétés de l'air humide à partir de différents paramètres.
+                    </p>
+                    <a href="{% url 'humid_air:properties_with_temperature_and_relative_humidity' %}"
+                       class="inline-flex items-center mt-3 text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"
+                       aria-label="Accéder au calculateur d'air humide">
+                        <span>Accéder</span>
+                        <svg class="w-5 h-5 ml-1"
+                             aria-hidden="true"
+                             fill="currentColor"
+                             viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd">
+                            </path>
+                        </svg>
+                    </a>
+                </article>
+                <article class="p-4 bg-gray-50 rounded-lg dark:bg-gray-700">
+                    <h3 class="text-lg font-medium dark:text-white">Documentation</h3>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">Consultez notre documentation API.</p>
+                    <a href="/api/docs/"
+                       class="inline-flex items-center mt-3 text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400"
+                       aria-label="Voir la documentation technique">
+                        <span>Voir la documentation</span>
+                        <svg class="w-5 h-5 ml-1"
+                             aria-hidden="true"
+                             fill="currentColor"
+                             viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd">
+                            </path>
+                        </svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,10 @@
+<div id="{% if card_id %}{{ card_id }}{% endif %}"
+     class="{% if height %}{{ height }}{% endif %} p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+    {% if card_title %}<h3 class="mb-4 text-xl font-semibold dark:text-white">{{ card_title }}</h3>{% endif %}
+    {% block card_body %}{% endblock card_body %}
+    {% if show_footer %}
+        <div class="px-4 py-2 text-gray-400 border border-gray-200 border-dashed rounded dark:border-gray-600">
+            {% block card_footer %}{% endblock card_footer %}
+        </div>
+    {% endif %}
+</div>
