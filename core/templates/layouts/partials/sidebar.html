@@ -8,7 +8,7 @@
                     <li>
                         <a href="/"
                            class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-whitee"
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                                  aria-hidden="true"
                                  xmlns="http://www.w3.org/2000/svg"
                                  width="24"
@@ -23,8 +23,8 @@
                     <li>
                         <button type="button"
                                 class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                                aria-controls="dropdown-layouts"
-                                data-collapse-toggle="dropdown-layouts">
+                                aria-controls="dropdown-humid-air-layouts"
+                                data-collapse-toggle="dropdown-humid-air-layouts">
                             <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                                  aria-hidden="true"
                                  xmlns="http://www.w3.org/2000/svg"
@@ -44,9 +44,41 @@
                                 </path>
                             </svg>
                         </button>
-                        <ul id="dropdown-layouts" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-humid-air-layouts" class="hidden py-2 space-y-2">
                             <li>
                                 <a href="{% url 'humid_air:properties_with_temperature_and_relative_humidity' %}"
+                                   class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Propriétés</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button type="button"
+                                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                                aria-controls="dropdown-sec-fluids-layouts"
+                                data-collapse-toggle="dropdown-sec-fluids-layouts">
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                                 aria-hidden="true"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 width="24"
+                                 height="24"
+                                 fill="none"
+                                 viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M7 3c0-.55228.44772-1 1-1h8c.5523 0 1 .44772 1 1v2h1c.5523 0 1 .44772 1 1 0 .44954-.2966.8298-.7048.95572.6113.76712 1.3165 1.84205 1.589 3.04428H11c-.5523 0-1 .4477-1 1v7c0 .5523.4477 1 1 1h9v.002C20 21.2121 18.2083 23 16 23H8c-2.20825 0-4-1.7879-4-3.998V11c0-1.59816.92812-3.06965 1.70483-4.04428C5.29662 6.82979 5 6.44954 5 6c0-.55228.44772-1 1-1h1V3Z" />
+                                <path fill="currentColor" d="M20 17v-5h-8v5h8Z" />
+                            </svg>
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Fluides secondaires</span>
+                            <svg sidebar-toggle-item
+                                 class="w-6 h-6"
+                                 fill="currentColor"
+                                 viewBox="0 0 20 20"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd">
+                                </path>
+                            </svg>
+                        </button>
+                        <ul id="dropdown-sec-fluids-layouts" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="{% url 'sec_fluid:properties_with_temperature_and_concentration' %}"
                                    class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Propriétés</a>
                             </li>
                         </ul>

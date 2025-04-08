@@ -1,5 +1,5 @@
 """
-URL configuration for agolliotapi project.
+URL configuration for sec_fluid.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -15,17 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
 
-from core.api import api
-from core.views import FlowBiteView, HomeView
+from apps.sec_fluid import views
+
+app_name = "sec_fluid"
 
 urlpatterns = [
-    path("", HomeView.as_view(), name="home"),
-    path("flowbite/", FlowBiteView.as_view(), name="flowbite"),
-    path("admin/", admin.site.urls),
-    path("api/", api.urls),
-    path("humid_air/", include("apps.humid_air.urls")),
-    path("sec_fluid/", include("apps.sec_fluid.urls")),
+    path(
+        "properties_with_temperature_and_concentration/",
+        views.IncompressibleVolumeBasedMixturePropertiesWithTemperatureAndConcentrationView.as_view(),
+        name="properties_with_temperature_and_concentration",
+    ),
 ]

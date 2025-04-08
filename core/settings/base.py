@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "compressor",
     "apps.project.apps.ProjectConfig",
     "apps.humid_air.apps.HumidAirConfig",
+    "apps.sec_fluid.apps.SecFluidConfig",
 ]
 
 MIDDLEWARE = [

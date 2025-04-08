@@ -1,0 +1,16 @@
+{% extends "layouts/_default/dashboard.html" %}
+{% block content %}
+    <div class="mb-4 col-span-full xl:mb-2">
+        <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
+            Calculateur de Propriétés des fluides secondaires
+        </h1>
+    </div>
+    <div class="col-span-full">
+        {% include "pages/properties_temp_conc/partials/input_card.html" with card_title="Données d'entrées" show_footer=False card_id="input-card" height="h-full" %}
+    </div>
+    <div class="col-span-full">
+        {% if result %}
+            {% include "pages/properties_temp_conc/partials/results_card.html" with card_title="Résultats" show_footer=False card_id="result-card" height="h-full" %}
+        {% endif %}
+    </div>
+{% endblock content %}

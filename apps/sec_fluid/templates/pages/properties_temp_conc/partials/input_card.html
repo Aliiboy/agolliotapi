@@ -3,12 +3,12 @@
     <form method="post" class="mb-4">
         {% csrf_token %}
         <div class="mb-4">
-            <label for="{{ form.altitude.id_for_label }}"
+            <label for="{{ form.mixture_name.id_for_label }}"
                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                {{ form.altitude.label }}
+                {{ form.mixture_name.label }}
             </label>
-            {{ form.altitude }}
-            {% if form.altitude.errors %}<div class="text-sm text-red-600">{{ form.altitude.errors }}</div>{% endif %}
+            {{ form.mixture_name }}
+            {% if form.mixture_name.errors %}<div class="text-sm text-red-600">{{ form.mixture_name.errors }}</div>{% endif %}
         </div>
         <div class="mb-4">
             <label for="{{ form.temperature.id_for_label }}"
@@ -19,14 +19,12 @@
             {% if form.temperature.errors %}<div class="text-sm text-red-600">{{ form.temperature.errors }}</div>{% endif %}
         </div>
         <div class="mb-6">
-            <label for="{{ form.relative_humidity.id_for_label }}"
+            <label for="{{ form.concentration.id_for_label }}"
                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                {{ form.relative_humidity.label }}
+                {{ form.concentration.label }}
             </label>
-            {{ form.relative_humidity }}
-            {% if form.relative_humidity.errors %}
-                <div class="text-sm text-red-600">{{ form.relative_humidity.errors }}</div>
-            {% endif %}
+            {{ form.concentration }}
+            {% if form.concentration.errors %}<div class="text-sm text-red-600">{{ form.concentration.errors }}</div>{% endif %}
         </div>
         <div>
             <button type="submit"

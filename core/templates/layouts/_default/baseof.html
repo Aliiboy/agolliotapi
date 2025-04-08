@@ -6,11 +6,17 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="agolliot API - Outils et calculateurs pour l'ingénierie thermique et industrielle">
-        <meta name="keywords" content="agolliot, api, ingénierie, thermique, industrielle, calculateur, air humide">
+        <meta name="description"
+              content="agolliot API - Outils et calculateurs pour l'ingénierie thermique et industrielle">
+        <meta name="keywords"
+              content="agolliot, api, ingénierie, thermique, industrielle, calculateur, air humide">
         <meta name="author" content="Alexandre GOLLIOT">
         <meta name="robots" content="noindex, nofollow">
-        <title>{% block title %}Agolliot API{% endblock title %}</title>
+        <title>
+            {% block title %}
+                Agolliot API
+            {% endblock title %}
+        </title>
         {% compress css %}
             <link rel="stylesheet" href="{% static 'src/output.css' %}">
         {% endcompress %}
@@ -26,7 +32,8 @@
         {% block main %}
         {% endblock main %}
         {% block scripts %}
-            <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js" defer></script>
+            <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"
+                    defer></script>
             <script src="{% static 'src/index.js' %}" type="module" defer></script>
         {% endblock scripts %}
     </body>

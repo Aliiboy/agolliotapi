@@ -3,6 +3,7 @@ import os
 from ninja import NinjaAPI, Swagger
 
 from apps.humid_air.api import humid_air_router
+from apps.sec_fluid.api import sec_fluid_router
 
 # TODO
 api = NinjaAPI(
@@ -22,3 +23,4 @@ api = NinjaAPI(
 
 # api.add_router("/project", project_router)
 api.add_router("/humid_air", humid_air_router)
+api.add_router("/sec_fluid", sec_fluid_router)
