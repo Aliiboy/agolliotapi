@@ -11,6 +11,7 @@ def get_fluid_type(mixture_name: str):
     fluid_types = {
         "AEG": FluidsList.AEG,
         "APG": FluidsList.APG,
+        "MAM": FluidsList.MAM,
     }
     return fluid_types[mixture_name]
 
@@ -26,6 +27,7 @@ class IncompressibleVolumeBasedMixturePropertiesWithTemperatureAndConcentrationF
         choices=[
             (FluidsList.AEG, "Ethylene Glycol"),
             (FluidsList.APG, "Propylene Glycol"),
+            (FluidsList.MAM, "Ammonia (NH3) - aqueous solution"),
         ],
         widget=forms.Select(
             attrs={
