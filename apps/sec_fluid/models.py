@@ -24,3 +24,7 @@ class IncompressibleMixtureFluid(models.Model):
 
     def __str__(self):
         return self.name + " - " + self.description
+
+    class Meta:
+        verbose_name = "Fluide à mélange"
+        verbose_name_plural = "Fluides à mélange"
