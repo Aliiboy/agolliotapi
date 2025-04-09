@@ -24,7 +24,7 @@ app_name = "sec_fluid"
 urlpatterns = [
     path(
         "properties_with_temperature_and_concentration/",
-        views.IncompressibleVolumeBasedMixturePropertiesWithTemperatureAndConcentrationView.as_view(),
+        views.IncompressibleMixturePropertiesWithTemperatureAndConcentrationView.as_view(),
         name="properties_with_temperature_and_concentration",
     ),
 ]

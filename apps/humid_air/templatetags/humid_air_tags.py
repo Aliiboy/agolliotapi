@@ -114,14 +114,14 @@ def properties_data(result):
             "label": "Viscosité dynamique",
             "unit": "[Pa*s]",
             "value": result["dynamic_viscosity"],
-            "precision": 8,
+            "precision": 10,
         },
         {
             "key": "kinematic_viscosity",
             "label": "Viscosité cinématique",
             "unit": "[m²/s]",
             "value": result["kinematic_viscosity"],
-            "precision": 8,
+            "precision": 10,
         },
         {
             "key": "prandtl",
