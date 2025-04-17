@@ -63,7 +63,7 @@ class MixtureEnum(Enum):
 
     def __init__(self, code: str, description: str):
         # La valeur officielle de l'enum reste le code
-        self._value_ = (code, description)
+        self._value_ = code
         # On ajoute un attribut pour la description
         self.description = description
 
