@@ -1,3 +1,5 @@
+from enum import Enum
+
 from ninja import Field, Query, Router, Schema
 from pyfluids import Fluid, FluidsList, Input
 
@@ -7,11 +9,70 @@ from apps.project.api import ErrorResponse
 sec_fluid_router = Router(tags=["Fluides Secondaires"])
 
 
+class MixtureEnum(Enum):
+    # mass-based binary mixtures
+    FRE = ("FRE", "Freezium, Potassium Formate")
+    IceEA = ("IceEA", "Ice slurry with Ethanol")
+    IceNA = ("IceNA", "Ice slurry with NaCl")
+    IcePG = ("IcePG", "Ice slurry with Propylene Glycol")
+    LiBr = ("LiBr", "Lithium-bromide solution – aq")
+    MAM = ("MAM", "Ammonia (NH3) – aqueous solution")
+    MAM2 = ("MAM2", "Melinder, Ammonia")
+    MCA = ("MCA", "Calcium Chloride (CaCl2) – aq")
+    MCA2 = ("MCA2", "Melinder, Calcium Chloride")
+    MEA = ("MEA", "Ethyl Alcohol (Ethanol) – aq")
+    MEA2 = ("MEA2", "Melinder, Ethanol")
+    MEG = ("MEG", "Ethylene Glycol – aq")
+    MEG2 = ("MEG2", "Melinder, Ethylene Glycol")
+    MGL = ("MGL", "Glycerol – aq")
+    MGL2 = ("MGL2", "Melinder, Glycerol")
+    MITSW = ("MITSW", "MIT Seawater")
+    MKA = ("MKA", "Potassium Acetate (CH₃CO₂K) – aq")
+    MKA2 = ("MKA2", "Melinder, Potassium Acetate")
+    MKC = ("MKC", "Potassium Carbonate (K₂CO₃) – aq")
+    MKC2 = ("MKC2", "Melinder, Potassium Carbonate")
+    MKF = ("MKF", "Potassium Formate (CHKO₂) – aq")
+    MLI = ("MLI", "Lithium Chloride (LiCl) – aq")
+    MMA = ("MMA", "Methyl Alcohol (Methanol) – aq")
+    MMA2 = ("MMA2", "Melinder, Methanol")
+    MMG = ("MMG", "MgCl₂ – aq")
+    MMG2 = ("MMG2", "Melinder, Magnesium Chloride")
+    MNA = ("MNA", "Sodium Chloride (NaCl) – aq")
+    MNA2 = ("MNA2", "Melinder, Sodium Chloride")
+    MPG = ("MPG", "Propylene Glycol – aq")
+    MPG2 = ("MPG2", "Melinder, Propylene Glycol")
+    VCA = ("VCA", "VDI, Calcium Chloride")
+    VKC = ("VKC", "VDI, Potassium Carbonate")
+    VMA = ("VMA", "VDI, Methanol")
+    VMG = ("VMG", "VDI, Magnesium Chloride")
+    VNA = ("VNA", "VDI, Sodium Chloride")
+    # volume-based binary mixtures
+    AEG = ("AEG", "ASHRAE, Ethylene Glycol")
+    AKF = ("AKF", "Antifrogen KF, Potassium Formate")
+    AL = ("AL", "Antifrogen L, Propylene Glycol")
+    AN = ("AN", "Antifrogen N, Ethylene Glycol")
+    APG = ("APG", "ASHRAE, Propylene Glycol")
+    GKN = ("GKN", "Glykosol N, Ethylene Glycol")
+    PK2 = ("PK2", "Pekasol 2000, K acetate/formate")
+    PKL = ("PKL", "Pekasol L, Propylene Glycol")
+    ZAC = ("ZAC", "Zitrec AC, Corrosion Inhibitor")
+    ZFC = ("ZFC", "Zitrec FC, Propylene Glycol")
+    ZLC = ("ZLC", "Zitrec LC, Propylene Glycol")
+    ZM = ("ZM", "Zitrec M, Ethylene Glycol")
+    ZMC = ("ZMC", "Zitrec MC, Ethylene Glycol")
+
+    def __init__(self, code: str, description: str):
+        # La valeur officielle de l'enum reste le code
+        self._value_ = code
+        # On ajoute un attribut pour la description
+        self.description = description
+
+
 # Modèle de données pour la requête
 class SecondaryFluidPropertyRequest(Schema):
-    mixture_name: str = Field(
-        default="AEG",
-        description="Type de fluide secondaire (AEG: Ethylene Glycol, APG: Propylene Glycol)",
+    mixture_name: MixtureEnum = Field(
+        description="Type de fluide secondaire : "
+        + "; ".join(f"{m.name}: {m.description}" for m in MixtureEnum),
     )
     temperature: float = Field(
         default=20,
@@ -50,15 +111,6 @@ class SecondaryFluidPropertyResponse(Schema):
     )
 
 
-def get_fluid_type(mixture_name: str):
-    """Convertit le nom du mélange en objet FluidsList correspondant"""
-    fluid_types = {
-        "AEG": FluidsList.AEG,
-        "APG": FluidsList.APG,
-    }
-    return fluid_types[mixture_name]
-
-
 @sec_fluid_router.get(
     "/properties_with_temperature_and_concentration",
     response={200: SecondaryFluidPropertyResponse, 400: ErrorResponse},
@@ -69,11 +121,11 @@ def calculate_properties(request, input: Query[SecondaryFluidPropertyRequest]):
     Calcule les propriétés des fluides secondaires (éthylène glycol ou propylène glycol)
     en fonction de la température et de la concentration
     """
-    # Conversion du nom du mélange en type de fluide
-    fluid_type = get_fluid_type(input.mixture_name)
+
+    get_fluid_attr = getattr(FluidsList, input.mixture_name)
 
     # Création d'un objet fluide avec PyFluids
-    sec_fluid = Fluid(fluid_type, input.concentration).with_state(
+    sec_fluid = Fluid(get_fluid_attr, input.concentration).with_state(
         Input.pressure(101325),
         Input.temperature(input.temperature),
     )
