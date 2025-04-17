@@ -128,7 +128,7 @@ def calculate_properties(request, input: Query[SecondaryFluidPropertyRequest]):
     mixture = input.mixture_name
 
     # Correction: Utilisation de mixture.value pour obtenir le code de l'enum
-    get_fluid_attr = getattr(FluidsList, mixture.value.code)
+    get_fluid_attr = getattr(FluidsList, mixture.value)
 
     # Création d'un objet fluide avec PyFluids
     sec_fluid = Fluid(get_fluid_attr, input.concentration).with_state(
