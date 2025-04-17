@@ -121,8 +121,11 @@ def calculate_properties(request, input: Query[SecondaryFluidPropertyRequest]):
     Calcule les propriétés des fluides secondaires (éthylène glycol ou propylène glycol)
     en fonction de la température et de la concentration
     """
+    mixture = input.mixture_name
+    temperature = input.temperature
+    concentration = input.concentration
 
-    get_fluid_attr = getattr(FluidsList, input.mixture_name)
+    get_fluid_attr = getattr(FluidsList, mixture.value)
 
     # Création d'un objet fluide avec PyFluids
     sec_fluid = Fluid(get_fluid_attr, input.concentration).with_state(
