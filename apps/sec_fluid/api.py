@@ -63,9 +63,13 @@ class MixtureEnum(Enum):
 
     def __init__(self, code: str, description: str):
         # La valeur officielle de l'enum reste le code
-        self._value_ = code
+        self._value_ = (code, description)
         # On ajoute un attribut pour la description
         self.description = description
+
+    @property
+    def value(self):
+        return self._value_
 
 
 # Modèle de données pour la requête
@@ -122,9 +126,8 @@ def calculate_properties(request, input: Query[SecondaryFluidPropertyRequest]):
     en fonction de la température et de la concentration
     """
     mixture = input.mixture_name
-    temperature = input.temperature
-    concentration = input.concentration
 
+    # Correction: Utilisation de mixture.value pour obtenir le code de l'enum
     get_fluid_attr = getattr(FluidsList, mixture.value)
 
     # Création d'un objet fluide avec PyFluids
