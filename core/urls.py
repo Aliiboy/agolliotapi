@@ -18,14 +18,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from core.api import api
 from core.views import FlowBiteView, HomeView
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("flowbite/", FlowBiteView.as_view(), name="flowbite"),
     path("admin/", admin.site.urls),
-    path("api/", api.urls),
     path("humid_air/", include("apps.humid_air.urls")),
     path("sec_fluid/", include("apps.sec_fluid.urls")),
+    path("project/", include("apps.project.urls")),
 ]

@@ -29,7 +29,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Third party apps
     "compressor",
+    "django_tables2",
+    # Local apps
     "apps.project.apps.ProjectConfig",
     "apps.humid_air.apps.HumidAirConfig",
     "apps.sec_fluid.apps.SecFluidConfig",

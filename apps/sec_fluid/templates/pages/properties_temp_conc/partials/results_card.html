@@ -1,33 +1,10 @@
 {% extends "layouts/partials/card.html" %}
-{% load sec_fluids_tags %}
 {% block card_body %}
     <div class="flex flex-col mt-6">
         <div class="overflow-x-auto rounded-lg">
             <div class="inline-block min-w-full align-middle">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">Propriété</th>
-                                <th scope="col" class="px-6 py-3">Unité</th>
-                                <th scope="col" class="px-6 py-3">Valeur</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% with properties_data=result|properties_data %}
-                                {% for property in properties_data %}
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ property.label }}
-                                        </th>
-                                        <td class="px-6 py-4">{{ property.unit }}</td>
-                                        <td class="px-6 py-4">{{ property.value|floatformat:property.precision }}</td>
-                                    </tr>
-                                {% endfor %}
-                            {% endwith %}
-                        </tbody>
-                    </table>
+                    {% include "pages/properties_temp_conc/partials/results_table.html" %}
                 </div>
             </div>
         </div>

@@ -1,0 +1,10 @@
+{% extends "layouts/_default/dashboard.html" %}
+{% load render_table from django_tables2 %}
+{% block content %}
+    <div class="mb-4 col-span-full xl:mb-2">
+        <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Projects</h1>
+    </div>
+    <div class="col-span-full">
+        {% include "pages/projects_list/partials/projects_list_card.html" with card_title="Liste des projets" show_footer=False card_id="projects-list-card" height="h-full" %}
+    </div>
+{% endblock content %}

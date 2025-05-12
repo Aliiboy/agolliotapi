@@ -17,14 +17,16 @@ Including another URLconf
 
 from django.urls import path
 
-from apps.sec_fluid import views
+from apps.sec_fluid.views import (
+    IncompressibleMixturePropertiesWithTemperatureAndConcentrationView,
+)
 
 app_name = "sec_fluid"
 
 urlpatterns = [
     path(
         "properties_with_temperature_and_concentration/",
-        views.IncompressibleMixturePropertiesWithTemperatureAndConcentrationView.as_view(),
+        IncompressibleMixturePropertiesWithTemperatureAndConcentrationView.as_view(),
         name="properties_with_temperature_and_concentration",
     ),
 ]

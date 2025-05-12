@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "django-compressor>=4.5.1",
-    "django-ninja>=1.3.0",
+    "django-tables2>=2.7.0",
     "mysqlclient>=2.2.7",
     "pyfluids>=2.8.0",
     "python-dotenv>=1.0.1",

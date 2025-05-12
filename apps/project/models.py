@@ -1,6 +1,7 @@
 import uuid
 
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -14,3 +15,6 @@ class Project(models.Model):
 
     def __str__(self):
         return self.number + " - " + self.name
+
+    def get_absolute_url(self):
+        return reverse("project:projects-list")

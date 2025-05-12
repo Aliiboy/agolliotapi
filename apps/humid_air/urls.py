@@ -17,14 +17,16 @@ Including another URLconf
 
 from django.urls import path
 
-from apps.humid_air import views
+from apps.humid_air.views import (
+    HumidAirPropertiesWithTemperatureAndRelativeHumidityView,
+)
 
 app_name = "humid_air"
 
 urlpatterns = [
     path(
         "properties_with_temperature_and_relative_humidity/",
-        views.HumidAirPropertiesWithTemperatureAndRelativeHumidityView.as_view(),
+        HumidAirPropertiesWithTemperatureAndRelativeHumidityView.as_view(),
         name="properties_with_temperature_and_relative_humidity",
     ),
 ]
