@@ -3,7 +3,7 @@ set -x
 
 # a lancer sur python-anywhere.com
 
-git clean -f
+git clean -fd
 git restore .
 git pull 
 
