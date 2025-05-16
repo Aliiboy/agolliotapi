@@ -1,4 +1,5 @@
-from django.views.generic.edit import UpdateView, CreateView
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django_tables2 import SingleTableView
 
 from apps.project.forms import ProjectForm
@@ -37,3 +38,9 @@ class ProjectUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context["title"] = f"{self.object.number} - {self.object.name}"
         return context
+
+
+class ProjectDeleteView(DeleteView):
+    model = Project
+    template_name = "pages/projects_list/delete.html"
+    success_url = reverse_lazy("project:projects-list")
