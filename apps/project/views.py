@@ -1,4 +1,4 @@
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, CreateView
 from django_tables2 import SingleTableView
 
 from apps.project.forms import ProjectForm
@@ -17,10 +17,21 @@ class ProjectListView(SingleTableView):
         return context
 
 
+class ProjectCreateView(CreateView):
+    model = Project
+    form_class = ProjectForm
+    template_name = "pages/projects_list/create_update.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Create Project"
+        return context
+
+
 class ProjectUpdateView(UpdateView):
     model = Project
     form_class = ProjectForm
-    template_name = "pages/projects_list/update.html"
+    template_name = "pages/projects_list/create_update.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

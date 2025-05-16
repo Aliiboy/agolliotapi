@@ -17,11 +17,12 @@ Including another URLconf
 
 from django.urls import path
 
-from apps.project.views import ProjectListView, ProjectUpdateView
+from apps.project.views import ProjectListView, ProjectUpdateView, ProjectCreateView
 
 app_name = "project"
 
 urlpatterns = [
     path("projects-list/", ProjectListView.as_view(), name="projects-list"),
     path("<uuid:pk>/update/", ProjectUpdateView.as_view(), name="project-update"),
+    path("create/", ProjectCreateView.as_view(), name="project-create"),
 ]
